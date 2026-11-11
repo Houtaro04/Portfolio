@@ -1,0 +1,316 @@
+{
+  "label": "Công nghiệp",
+  "desc": "Nhà máy, dây chuyền, sản phẩm và công trình: ảnh sắc nét, đúng tỉ lệ, phục vụ catalogue, hồ sơ năng lực và truyền thông doanh nghiệp.",
+  "sets": [
+    {
+      "title": "Khu đóng gói",
+      "desc": "Dây chuyền đóng gói thành phẩm.",
+      "featured": true,
+      "photos": [
+        {
+          "src": "",
+          "title": "Khu đóng gói 1"
+        },
+        {
+          "src": "",
+          "title": "Khu đóng gói 2"
+        },
+        {
+          "src": "",
+          "title": "Khu đóng gói 3"
+        },
+        {
+          "src": "",
+          "title": "Khu đóng gói 4"
+        },
+        {
+          "src": "",
+          "title": "Khu đóng gói 5"
+        },
+        {
+          "src": "",
+          "title": "Khu đóng gói 6"
+        }
+      ]
+    },
+    {
+      "title": "Khu lắp ráp",
+      "desc": "Nhịp vận hành của dây chuyền lắp ráp.",
+      "featured": true,
+      "photos": [
+        {
+          "src": "",
+          "title": "Khu lắp ráp 1"
+        },
+        {
+          "src": "",
+          "title": "Khu lắp ráp 2"
+        },
+        {
+          "src": "",
+          "title": "Khu lắp ráp 3"
+        },
+        {
+          "src": "",
+          "title": "Khu lắp ráp 4"
+        },
+        {
+          "src": "",
+          "title": "Khu lắp ráp 5"
+        },
+        {
+          "src": "",
+          "title": "Khu lắp ráp 6"
+        }
+      ]
+    },
+    {
+      "title": "Toàn cảnh nhà máy",
+      "desc": "Kiến trúc và quy mô nhà xưởng.",
+      "featured": true,
+      "photos": [
+        {
+          "src": "",
+          "title": "Toàn cảnh nhà máy 1"
+        },
+        {
+          "src": "",
+          "title": "Toàn cảnh nhà máy 2"
+        },
+        {
+          "src": "",
+          "title": "Toàn cảnh nhà máy 3"
+        },
+        {
+          "src": "",
+          "title": "Toàn cảnh nhà máy 4"
+        },
+        {
+          "src": "",
+          "title": "Toàn cảnh nhà máy 5"
+        },
+        {
+          "src": "",
+          "title": "Toàn cảnh nhà máy 6"
+        }
+      ]
+    },
+    {
+      "title": "Sản phẩm nền trắng",
+      "desc": "Ảnh catalogue và sàn thương mại điện tử.",
+      "featured": true,
+      "photos": [
+        {
+          "src": "",
+          "title": "Sản phẩm nền trắng 1"
+        },
+        {
+          "src": "",
+          "title": "Sản phẩm nền trắng 2"
+        },
+        {
+          "src": "",
+          "title": "Sản phẩm nền trắng 3"
+        },
+        {
+          "src": "",
+          "title": "Sản phẩm nền trắng 4"
+        },
+        {
+          "src": "",
+          "title": "Sản phẩm nền trắng 5"
+        },
+        {
+          "src": "",
+          "title": "Sản phẩm nền trắng 6"
+        }
+      ]
+    },
+    {
+      "title": "Kiểm tra chất lượng",
+      "desc": "",
+      "featured": false,
+      "photos": [
+        {
+          "src": "",
+          "title": "Kiểm tra chất lượng 1"
+        },
+        {
+          "src": "",
+          "title": "Kiểm tra chất lượng 2"
+        },
+        {
+          "src": "",
+          "title": "Kiểm tra chất lượng 3"
+        },
+        {
+          "src": "",
+          "title": "Kiểm tra chất lượng 4"
+        },
+        {
+          "src": "",
+          "title": "Kiểm tra chất lượng 5"
+        },
+        {
+          "src": "",
+          "title": "Kiểm tra chất lượng 6"
+        }
+      ]
+    },
+    {
+      "title": "Công trình xây dựng",
+      "desc": "",
+      "featured": false,
+      "photos": [
+        {
+          "src": "",
+          "title": "Công trình xây dựng 1"
+        },
+        {
+          "src": "",
+          "title": "Công trình xây dựng 2"
+        },
+        {
+          "src": "",
+          "title": "Công trình xây dựng 3"
+        },
+        {
+          "src": "",
+          "title": "Công trình xây dựng 4"
+        },
+        {
+          "src": "",
+          "title": "Công trình xây dựng 5"
+        },
+        {
+          "src": "",
+          "title": "Công trình xây dựng 6"
+        }
+      ]
+    },
+    {
+      "title": "Chi tiết vật liệu",
+      "desc": "",
+      "featured": false,
+      "photos": [
+        {
+          "src": "",
+          "title": "Chi tiết vật liệu 1"
+        },
+        {
+          "src": "",
+          "title": "Chi tiết vật liệu 2"
+        },
+        {
+          "src": "",
+          "title": "Chi tiết vật liệu 3"
+        },
+        {
+          "src": "",
+          "title": "Chi tiết vật liệu 4"
+        },
+        {
+          "src": "",
+          "title": "Chi tiết vật liệu 5"
+        },
+        {
+          "src": "",
+          "title": "Chi tiết vật liệu 6"
+        }
+      ]
+    },
+    {
+      "title": "Máy CNC",
+      "desc": "",
+      "featured": false,
+      "photos": [
+        {
+          "src": "",
+          "title": "Máy CNC 1"
+        },
+        {
+          "src": "",
+          "title": "Máy CNC 2"
+        },
+        {
+          "src": "",
+          "title": "Máy CNC 3"
+        },
+        {
+          "src": "",
+          "title": "Máy CNC 4"
+        },
+        {
+          "src": "",
+          "title": "Máy CNC 5"
+        },
+        {
+          "src": "",
+          "title": "Máy CNC 6"
+        }
+      ]
+    },
+    {
+      "title": "Hệ thống điều khiển",
+      "desc": "",
+      "featured": false,
+      "photos": [
+        {
+          "src": "",
+          "title": "Hệ thống điều khiển 1"
+        },
+        {
+          "src": "",
+          "title": "Hệ thống điều khiển 2"
+        },
+        {
+          "src": "",
+          "title": "Hệ thống điều khiển 3"
+        },
+        {
+          "src": "",
+          "title": "Hệ thống điều khiển 4"
+        },
+        {
+          "src": "",
+          "title": "Hệ thống điều khiển 5"
+        },
+        {
+          "src": "",
+          "title": "Hệ thống điều khiển 6"
+        }
+      ]
+    },
+    {
+      "title": "Drone khu công nghiệp",
+      "desc": "",
+      "featured": false,
+      "photos": [
+        {
+          "src": "",
+          "title": "Drone khu công nghiệp 1"
+        },
+        {
+          "src": "",
+          "title": "Drone khu công nghiệp 2"
+        },
+        {
+          "src": "",
+          "title": "Drone khu công nghiệp 3"
+        },
+        {
+          "src": "",
+          "title": "Drone khu công nghiệp 4"
+        },
+        {
+          "src": "",
+          "title": "Drone khu công nghiệp 5"
+        },
+        {
+          "src": "",
+          "title": "Drone khu công nghiệp 6"
+        }
+      ]
+    }
+  ]
+}

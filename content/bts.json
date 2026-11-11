@@ -1,0 +1,46 @@
+{
+  "label": "Video hậu trường & Checkin",
+  "desc": "Hậu trường những buổi chụp: dựng ánh sáng, chỉ đạo người mẫu và cách mình làm việc ngoài hiện trường.",
+  "videos": [
+    {
+      "title": "Dựng ánh sáng chân dung studio",
+      "desc": "Từ trống trơn tới khung hình hoàn chỉnh.",
+      "duration": "2:35",
+      "thumb": "",
+      "youtubeId": "",
+      "src": ""
+    },
+    {
+      "title": "Một ngày chụp nhà máy",
+      "desc": "Theo chân buổi chụp dây chuyền sản xuất.",
+      "duration": "3:10",
+      "thumb": "",
+      "youtubeId": "",
+      "src": ""
+    },
+    {
+      "title": "Hậu trường editorial",
+      "desc": "Concept, người mẫu và những lần thử.",
+      "duration": "1:48",
+      "thumb": "",
+      "youtubeId": "",
+      "src": ""
+    },
+    {
+      "title": "Bay drone khu công nghiệp",
+      "desc": "Chuẩn bị, an toàn bay và góc máy.",
+      "duration": "2:05",
+      "thumb": "",
+      "youtubeId": "",
+      "src": ""
+    },
+    {
+      "title": "Chụp catalogue sản phẩm",
+      "desc": "Setup nền trắng và bố trí đèn.",
+      "duration": "1:30",
+      "thumb": "",
+      "youtubeId": "",
+      "src": ""
+    }
+  ]
+}

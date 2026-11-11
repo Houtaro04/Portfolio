@@ -1,0 +1,164 @@
+# Cấu hình trang quản trị nội dung (Decap CMS). Mở tại  /admin/
+# Hướng dẫn cài đặt và bàn giao: xem ADMIN.md
+
+backend:
+  name: github
+  repo: Houtaro04/Portfolio   # repo GitHub của dự án (định dạng: tên-tài-khoản/tên-repo)
+  branch: main               # <-- nhánh mà Netlify/Cloudflare dùng để build
+
+# Chạy thử trên máy (npm run dev + npm run cms): CMS ghi thẳng vào file trong dự án, không cần GitHub.
+# Cài đặt này chỉ có tác dụng khi mở từ localhost, khi lên mạng thật sẽ tự bỏ qua.
+local_backend: true
+
+locale: vi
+
+# Ảnh/video khách tải lên được lưu vào public/images/uploads và dùng đường dẫn /images/uploads/...
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: noi_dung
+    label: Nội dung trang web
+    delete: false
+    editor:
+      preview: false
+    files:
+      # ---------------------------------------------------------------- Chuyên nghiệp
+      - label: "Portfolio: Chuyên nghiệp (các bộ ảnh)"
+        name: pro
+        file: content/pro.json
+        fields:
+          - { label: "Tên tab", name: label, widget: string }
+          - { label: "Mô tả dưới tab", name: desc, widget: text, required: false }
+          - label: "Bộ ảnh"
+            label_singular: "bộ ảnh"
+            name: sets
+            widget: list
+            summary: "{{fields.title}}"
+            fields: &set_fields
+              - { label: "Tên bộ ảnh", name: title, widget: string }
+              - { label: "Mô tả", name: desc, widget: text, required: false }
+              - { label: "Hiện ở trang chủ (nổi bật)", name: featured, widget: boolean, default: false, required: false }
+              - { label: "Ảnh bìa (bỏ trống = dùng ảnh đầu tiên)", name: cover, widget: image, required: false }
+              - label: "Ảnh trong bộ"
+                label_singular: "ảnh"
+                name: photos
+                widget: list
+                required: false
+                summary: "{{fields.title}} {{fields.src}}"
+                fields:
+                  - { label: "Ảnh", name: src, widget: image, required: false }
+                  - { label: "Chú thích (tuỳ chọn)", name: title, widget: string, required: false }
+
+      # ---------------------------------------------------------------- Công nghiệp
+      - label: "Portfolio: Công nghiệp (các bộ ảnh)"
+        name: industrial
+        file: content/industrial.json
+        fields:
+          - { label: "Tên tab", name: label, widget: string }
+          - { label: "Mô tả dưới tab", name: desc, widget: text, required: false }
+          - label: "Bộ ảnh"
+            label_singular: "bộ ảnh"
+            name: sets
+            widget: list
+            summary: "{{fields.title}}"
+            fields: *set_fields
+
+      # ---------------------------------------------------------------- Project
+      - label: "Portfolio: Project (mỗi project gồm nhiều bộ ảnh)"
+        name: projects
+        file: content/projects.json
+        fields:
+          - { label: "Tên tab", name: label, widget: string }
+          - { label: "Mô tả dưới tab", name: desc, widget: text, required: false }
+          - label: "Project"
+            label_singular: "project"
+            name: projects
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Tên project", name: title, widget: string }
+              - { label: "Mô tả", name: desc, widget: text, required: false }
+              - { label: "Hiện ở trang chủ (nổi bật)", name: featured, widget: boolean, default: false, required: false }
+              - { label: "Ảnh bìa (bỏ trống = dùng bìa bộ ảnh đầu tiên)", name: cover, widget: image, required: false }
+              - label: "Bộ ảnh của project"
+                label_singular: "bộ ảnh"
+                name: sets
+                widget: list
+                required: false
+                summary: "{{fields.title}}"
+                fields: *set_fields
+
+      # ---------------------------------------------------------------- Video
+      - label: "Portfolio: Video hậu trường"
+        name: bts
+        file: content/bts.json
+        fields:
+          - { label: "Tên tab", name: label, widget: string }
+          - { label: "Mô tả dưới tab", name: desc, widget: text, required: false }
+          - label: "Video"
+            label_singular: "video"
+            name: videos
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Tên video", name: title, widget: string }
+              - { label: "Mô tả ngắn", name: desc, widget: text, required: false }
+              - { label: "Thời lượng (vd 2:35)", name: duration, widget: string, required: false }
+              - { label: "Ảnh bìa", name: thumb, widget: image, required: false }
+              - { label: "Mã video YouTube", name: youtubeId, widget: string, required: false, hint: "Là phần sau v= trong link YouTube. Ví dụ link https://www.youtube.com/watch?v=dQw4w9WgXcQ thì mã là dQw4w9WgXcQ" }
+              - { label: "Hoặc tải file video (mp4)", name: src, widget: file, required: false, hint: "Chỉ dùng khi không có YouTube. File lớn sẽ làm web nặng, nên ưu tiên YouTube." }
+
+      # ---------------------------------------------------------------- Hồ sơ
+      - label: "Về mình (hồ sơ)"
+        name: profile
+        file: content/profile.json
+        fields:
+          - { label: "Tên gọi ngắn", name: name, widget: string }
+          - { label: "Tên đầy đủ (hiện ở logo và chân trang)", name: fullName, widget: string }
+          - { label: "Ảnh phần Về mình", name: aboutImage, widget: image, required: false }
+          - { label: "Các đoạn giới thiệu", name: about, widget: list, field: { label: "Đoạn", name: text, widget: text } }
+          - label: "Số liệu nổi bật"
+            label_singular: "số liệu"
+            name: stats
+            widget: list
+            summary: "{{fields.value}} {{fields.label}}"
+            fields:
+              - { label: "Con số (vd 5+)", name: value, widget: string }
+              - { label: "Nhãn (vd Năm kinh nghiệm)", name: label, widget: string }
+          - { label: "Thẻ chuyên môn", name: tags, widget: list, field: { label: "Thẻ", name: tag, widget: string } }
+
+      # ---------------------------------------------------------------- Liên hệ
+      - label: "Mạng xã hội và liên hệ"
+        name: contact
+        file: content/contact.json
+        fields:
+          - label: "Mạng xã hội"
+            label_singular: "mạng xã hội"
+            name: socials
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Tên (vd Instagram)", name: name, widget: string }
+              - { label: "Mô tả ngắn", name: desc, widget: string, required: false }
+              - { label: "Tên tài khoản hiển thị (vd @kyle.photo)", name: handle, widget: string }
+              - { label: "Đường link", name: href, widget: string, hint: "Dán nguyên link, bắt đầu bằng https://" }
+          - { label: "Link Messenger", name: messenger, widget: string, required: false }
+          - { label: "Số điện thoại hiển thị", name: phone, widget: string, required: false }
+          - { label: "Số điện thoại dạng link (vd tel:+84901234567)", name: phoneHref, widget: string, required: false }
+          - { label: "Email", name: email, widget: string, required: false }
+
+      # ---------------------------------------------------------------- Cài đặt
+      - label: "Cài đặt chung"
+        name: settings
+        file: content/settings.json
+        fields:
+          - { label: "Số mục nổi bật hiện ở trang chủ", name: featuredCount, widget: number, value_type: int, min: 1, max: 8, default: 4 }
+          - label: "Tab mở sẵn khi vào trang"
+            name: defaultCategory
+            widget: select
+            options:
+              - { label: "Chuyên nghiệp", value: pro }
+              - { label: "Công nghiệp", value: industrial }
+              - { label: "Project", value: projects }
+              - { label: "Video hậu trường", value: bts }

@@ -1,0 +1,26 @@
+{
+  "socials": [
+    {
+      "name": "Instagram",
+      "desc": "Ảnh mới và hậu trường mỗi tuần.",
+      "handle": "@kyle.photo",
+      "href": "https://instagram.com/"
+    },
+    {
+      "name": "Facebook",
+      "desc": "Album dự án và nhận tin nhắn đặt lịch.",
+      "handle": "fb.com/kyle.photo",
+      "href": "https://facebook.com/"
+    },
+    {
+      "name": "TikTok",
+      "desc": "Video ngắn: kỹ thuật chụp, ánh sáng, behind the scenes.",
+      "handle": "@kyle.photo",
+      "href": "https://tiktok.com/"
+    }
+  ],
+  "messenger": "https://m.me/",
+  "phone": "0xxx xxx xxx",
+  "phoneHref": "tel:+84000000000",
+  "email": "hello@example.com"
+}

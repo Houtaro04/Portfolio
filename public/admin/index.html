@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Quản trị nội dung</title>
+</head>
+<body>
+  <!-- Decap CMS: giao diện chỉnh sửa nội dung cho khách hàng -->
+  <script>window.CMS_MANUAL_INIT = true;</script>
+  <script src="https://unpkg.com/decap-cms@3.8.4/dist/decap-cms.js"></script>
+  <script type="module">
+    import vi from 'https://unpkg.com/decap-cms-locales@3.9.0/dist/esm/vi/index.js';
+
+    // Tìm config.yml nằm cạnh trang này, dù người dùng gõ /admin hay /admin/ hay /admin/index.html
+    // (đường dẫn tương đối "config.yml" sẽ sai khi gõ /admin không có dấu / cuối).
+    const dir = location.pathname.replace(/\/(index(\.html)?)?$/, '');
+    const link = document.createElement('link');
+    link.rel = 'cms-config-url';
+    link.type = 'text/yaml';
+    link.href = dir + '/config.yml';
+    document.head.appendChild(link);
+
+    CMS.registerLocale('vi', vi);
+    CMS.init();
+  </script>
+</body>
+</html>

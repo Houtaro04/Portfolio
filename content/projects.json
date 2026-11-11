@@ -1,0 +1,606 @@
+{
+  "label": "Project",
+  "desc": "Những dự án trọn vẹn, mỗi project gồm nhiều bộ ảnh cùng một concept, từ ý tưởng đến thành phẩm.",
+  "projects": [
+    {
+      "title": "Chân dung studio",
+      "desc": "Loạt chân dung cá nhân và doanh nhân, ánh sáng studio.",
+      "featured": true,
+      "sets": [
+        {
+          "title": "Chân dung doanh nhân",
+          "desc": "Phong cách chỉn chu cho hồ sơ và truyền thông.",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Chân dung doanh nhân 1"
+            },
+            {
+              "src": "",
+              "title": "Chân dung doanh nhân 2"
+            },
+            {
+              "src": "",
+              "title": "Chân dung doanh nhân 3"
+            },
+            {
+              "src": "",
+              "title": "Chân dung doanh nhân 4"
+            },
+            {
+              "src": "",
+              "title": "Chân dung doanh nhân 5"
+            },
+            {
+              "src": "",
+              "title": "Chân dung doanh nhân 6"
+            }
+          ]
+        },
+        {
+          "title": "Chân dung nghệ sĩ",
+          "desc": "Ánh sáng kịch tính, nền tối.",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Chân dung nghệ sĩ 1"
+            },
+            {
+              "src": "",
+              "title": "Chân dung nghệ sĩ 2"
+            },
+            {
+              "src": "",
+              "title": "Chân dung nghệ sĩ 3"
+            },
+            {
+              "src": "",
+              "title": "Chân dung nghệ sĩ 4"
+            },
+            {
+              "src": "",
+              "title": "Chân dung nghệ sĩ 5"
+            },
+            {
+              "src": "",
+              "title": "Chân dung nghệ sĩ 6"
+            }
+          ]
+        },
+        {
+          "title": "Chân dung ngoài trời",
+          "desc": "Ánh sáng tự nhiên giờ vàng.",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Chân dung ngoài trời 1"
+            },
+            {
+              "src": "",
+              "title": "Chân dung ngoài trời 2"
+            },
+            {
+              "src": "",
+              "title": "Chân dung ngoài trời 3"
+            },
+            {
+              "src": "",
+              "title": "Chân dung ngoài trời 4"
+            },
+            {
+              "src": "",
+              "title": "Chân dung ngoài trời 5"
+            },
+            {
+              "src": "",
+              "title": "Chân dung ngoài trời 6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Thời trang editorial",
+      "desc": "Lookbook và editorial theo concept.",
+      "featured": true,
+      "sets": [
+        {
+          "title": "Lookbook mùa hè",
+          "desc": "",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Lookbook mùa hè 1"
+            },
+            {
+              "src": "",
+              "title": "Lookbook mùa hè 2"
+            },
+            {
+              "src": "",
+              "title": "Lookbook mùa hè 3"
+            },
+            {
+              "src": "",
+              "title": "Lookbook mùa hè 4"
+            },
+            {
+              "src": "",
+              "title": "Lookbook mùa hè 5"
+            },
+            {
+              "src": "",
+              "title": "Lookbook mùa hè 6"
+            }
+          ]
+        },
+        {
+          "title": "Concept studio màu",
+          "desc": "",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Concept studio màu 1"
+            },
+            {
+              "src": "",
+              "title": "Concept studio màu 2"
+            },
+            {
+              "src": "",
+              "title": "Concept studio màu 3"
+            },
+            {
+              "src": "",
+              "title": "Concept studio màu 4"
+            },
+            {
+              "src": "",
+              "title": "Concept studio màu 5"
+            },
+            {
+              "src": "",
+              "title": "Concept studio màu 6"
+            }
+          ]
+        },
+        {
+          "title": "Chi tiết trang phục",
+          "desc": "",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Chi tiết trang phục 1"
+            },
+            {
+              "src": "",
+              "title": "Chi tiết trang phục 2"
+            },
+            {
+              "src": "",
+              "title": "Chi tiết trang phục 3"
+            },
+            {
+              "src": "",
+              "title": "Chi tiết trang phục 4"
+            },
+            {
+              "src": "",
+              "title": "Chi tiết trang phục 5"
+            },
+            {
+              "src": "",
+              "title": "Chi tiết trang phục 6"
+            }
+          ]
+        },
+        {
+          "title": "Hậu trường editorial",
+          "desc": "",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Hậu trường editorial 1"
+            },
+            {
+              "src": "",
+              "title": "Hậu trường editorial 2"
+            },
+            {
+              "src": "",
+              "title": "Hậu trường editorial 3"
+            },
+            {
+              "src": "",
+              "title": "Hậu trường editorial 4"
+            },
+            {
+              "src": "",
+              "title": "Hậu trường editorial 5"
+            },
+            {
+              "src": "",
+              "title": "Hậu trường editorial 6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Thương hiệu & lifestyle",
+      "desc": "Ảnh thương hiệu và sản phẩm lifestyle cho truyền thông.",
+      "featured": true,
+      "sets": [
+        {
+          "title": "Ảnh thương hiệu",
+          "desc": "",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Ảnh thương hiệu 1"
+            },
+            {
+              "src": "",
+              "title": "Ảnh thương hiệu 2"
+            },
+            {
+              "src": "",
+              "title": "Ảnh thương hiệu 3"
+            },
+            {
+              "src": "",
+              "title": "Ảnh thương hiệu 4"
+            },
+            {
+              "src": "",
+              "title": "Ảnh thương hiệu 5"
+            },
+            {
+              "src": "",
+              "title": "Ảnh thương hiệu 6"
+            }
+          ]
+        },
+        {
+          "title": "Sản phẩm lifestyle",
+          "desc": "",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Sản phẩm lifestyle 1"
+            },
+            {
+              "src": "",
+              "title": "Sản phẩm lifestyle 2"
+            },
+            {
+              "src": "",
+              "title": "Sản phẩm lifestyle 3"
+            },
+            {
+              "src": "",
+              "title": "Sản phẩm lifestyle 4"
+            },
+            {
+              "src": "",
+              "title": "Sản phẩm lifestyle 5"
+            },
+            {
+              "src": "",
+              "title": "Sản phẩm lifestyle 6"
+            }
+          ]
+        },
+        {
+          "title": "Không gian làm việc",
+          "desc": "",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Không gian làm việc 1"
+            },
+            {
+              "src": "",
+              "title": "Không gian làm việc 2"
+            },
+            {
+              "src": "",
+              "title": "Không gian làm việc 3"
+            },
+            {
+              "src": "",
+              "title": "Không gian làm việc 4"
+            },
+            {
+              "src": "",
+              "title": "Không gian làm việc 5"
+            },
+            {
+              "src": "",
+              "title": "Không gian làm việc 6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dây chuyền sản xuất",
+      "desc": "Nhịp vận hành của nhà máy, từ nguyên liệu tới thành phẩm.",
+      "featured": true,
+      "sets": [
+        {
+          "title": "Khu đóng gói",
+          "desc": "",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Khu đóng gói 1"
+            },
+            {
+              "src": "",
+              "title": "Khu đóng gói 2"
+            },
+            {
+              "src": "",
+              "title": "Khu đóng gói 3"
+            },
+            {
+              "src": "",
+              "title": "Khu đóng gói 4"
+            },
+            {
+              "src": "",
+              "title": "Khu đóng gói 5"
+            },
+            {
+              "src": "",
+              "title": "Khu đóng gói 6"
+            }
+          ]
+        },
+        {
+          "title": "Khu lắp ráp",
+          "desc": "",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Khu lắp ráp 1"
+            },
+            {
+              "src": "",
+              "title": "Khu lắp ráp 2"
+            },
+            {
+              "src": "",
+              "title": "Khu lắp ráp 3"
+            },
+            {
+              "src": "",
+              "title": "Khu lắp ráp 4"
+            },
+            {
+              "src": "",
+              "title": "Khu lắp ráp 5"
+            },
+            {
+              "src": "",
+              "title": "Khu lắp ráp 6"
+            }
+          ]
+        },
+        {
+          "title": "Kiểm tra chất lượng",
+          "desc": "",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Kiểm tra chất lượng 1"
+            },
+            {
+              "src": "",
+              "title": "Kiểm tra chất lượng 2"
+            },
+            {
+              "src": "",
+              "title": "Kiểm tra chất lượng 3"
+            },
+            {
+              "src": "",
+              "title": "Kiểm tra chất lượng 4"
+            },
+            {
+              "src": "",
+              "title": "Kiểm tra chất lượng 5"
+            },
+            {
+              "src": "",
+              "title": "Kiểm tra chất lượng 6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Nhà máy & công trình",
+      "desc": "Kiến trúc công nghiệp và tiến độ công trình.",
+      "featured": false,
+      "sets": [
+        {
+          "title": "Toàn cảnh nhà máy",
+          "desc": "",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Toàn cảnh nhà máy 1"
+            },
+            {
+              "src": "",
+              "title": "Toàn cảnh nhà máy 2"
+            },
+            {
+              "src": "",
+              "title": "Toàn cảnh nhà máy 3"
+            },
+            {
+              "src": "",
+              "title": "Toàn cảnh nhà máy 4"
+            },
+            {
+              "src": "",
+              "title": "Toàn cảnh nhà máy 5"
+            },
+            {
+              "src": "",
+              "title": "Toàn cảnh nhà máy 6"
+            }
+          ]
+        },
+        {
+          "title": "Công trình xây dựng",
+          "desc": "",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Công trình xây dựng 1"
+            },
+            {
+              "src": "",
+              "title": "Công trình xây dựng 2"
+            },
+            {
+              "src": "",
+              "title": "Công trình xây dựng 3"
+            },
+            {
+              "src": "",
+              "title": "Công trình xây dựng 4"
+            },
+            {
+              "src": "",
+              "title": "Công trình xây dựng 5"
+            },
+            {
+              "src": "",
+              "title": "Công trình xây dựng 6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sự kiện",
+      "desc": "Khoảnh khắc tự nhiên tại hội nghị, ra mắt và tiệc.",
+      "featured": false,
+      "sets": [
+        {
+          "title": "Hội nghị",
+          "desc": "",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Hội nghị 1"
+            },
+            {
+              "src": "",
+              "title": "Hội nghị 2"
+            },
+            {
+              "src": "",
+              "title": "Hội nghị 3"
+            },
+            {
+              "src": "",
+              "title": "Hội nghị 4"
+            },
+            {
+              "src": "",
+              "title": "Hội nghị 5"
+            },
+            {
+              "src": "",
+              "title": "Hội nghị 6"
+            }
+          ]
+        },
+        {
+          "title": "Ra mắt sản phẩm",
+          "desc": "",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Ra mắt sản phẩm 1"
+            },
+            {
+              "src": "",
+              "title": "Ra mắt sản phẩm 2"
+            },
+            {
+              "src": "",
+              "title": "Ra mắt sản phẩm 3"
+            },
+            {
+              "src": "",
+              "title": "Ra mắt sản phẩm 4"
+            },
+            {
+              "src": "",
+              "title": "Ra mắt sản phẩm 5"
+            },
+            {
+              "src": "",
+              "title": "Ra mắt sản phẩm 6"
+            }
+          ]
+        },
+        {
+          "title": "Tiệc cuối năm",
+          "desc": "",
+          "featured": false,
+          "photos": [
+            {
+              "src": "",
+              "title": "Tiệc cuối năm 1"
+            },
+            {
+              "src": "",
+              "title": "Tiệc cuối năm 2"
+            },
+            {
+              "src": "",
+              "title": "Tiệc cuối năm 3"
+            },
+            {
+              "src": "",
+              "title": "Tiệc cuối năm 4"
+            },
+            {
+              "src": "",
+              "title": "Tiệc cuối năm 5"
+            },
+            {
+              "src": "",
+              "title": "Tiệc cuối năm 6"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

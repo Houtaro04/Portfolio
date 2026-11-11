@@ -1,0 +1,316 @@
+{
+  "label": "Chuyên nghiệp",
+  "desc": "Chân dung, thương hiệu, thời trang và sự kiện: ảnh được dàn dựng ánh sáng kỹ lưỡng và hậu kỳ tinh tế.",
+  "sets": [
+    {
+      "title": "Chân dung doanh nhân",
+      "desc": "Phong cách chỉn chu cho hồ sơ và truyền thông.",
+      "featured": true,
+      "photos": [
+        {
+          "src": "",
+          "title": "Chân dung doanh nhân 1"
+        },
+        {
+          "src": "",
+          "title": "Chân dung doanh nhân 2"
+        },
+        {
+          "src": "",
+          "title": "Chân dung doanh nhân 3"
+        },
+        {
+          "src": "",
+          "title": "Chân dung doanh nhân 4"
+        },
+        {
+          "src": "",
+          "title": "Chân dung doanh nhân 5"
+        },
+        {
+          "src": "",
+          "title": "Chân dung doanh nhân 6"
+        }
+      ]
+    },
+    {
+      "title": "Chân dung nghệ sĩ",
+      "desc": "Ánh sáng kịch tính, nền tối.",
+      "featured": true,
+      "photos": [
+        {
+          "src": "",
+          "title": "Chân dung nghệ sĩ 1"
+        },
+        {
+          "src": "",
+          "title": "Chân dung nghệ sĩ 2"
+        },
+        {
+          "src": "",
+          "title": "Chân dung nghệ sĩ 3"
+        },
+        {
+          "src": "",
+          "title": "Chân dung nghệ sĩ 4"
+        },
+        {
+          "src": "",
+          "title": "Chân dung nghệ sĩ 5"
+        },
+        {
+          "src": "",
+          "title": "Chân dung nghệ sĩ 6"
+        }
+      ]
+    },
+    {
+      "title": "Lookbook mùa hè",
+      "desc": "Lookbook thời trang ngoài trời.",
+      "featured": true,
+      "photos": [
+        {
+          "src": "",
+          "title": "Lookbook mùa hè 1"
+        },
+        {
+          "src": "",
+          "title": "Lookbook mùa hè 2"
+        },
+        {
+          "src": "",
+          "title": "Lookbook mùa hè 3"
+        },
+        {
+          "src": "",
+          "title": "Lookbook mùa hè 4"
+        },
+        {
+          "src": "",
+          "title": "Lookbook mùa hè 5"
+        },
+        {
+          "src": "",
+          "title": "Lookbook mùa hè 6"
+        }
+      ]
+    },
+    {
+      "title": "Ảnh thương hiệu",
+      "desc": "Hình ảnh thương hiệu và sản phẩm lifestyle.",
+      "featured": true,
+      "photos": [
+        {
+          "src": "",
+          "title": "Ảnh thương hiệu 1"
+        },
+        {
+          "src": "",
+          "title": "Ảnh thương hiệu 2"
+        },
+        {
+          "src": "",
+          "title": "Ảnh thương hiệu 3"
+        },
+        {
+          "src": "",
+          "title": "Ảnh thương hiệu 4"
+        },
+        {
+          "src": "",
+          "title": "Ảnh thương hiệu 5"
+        },
+        {
+          "src": "",
+          "title": "Ảnh thương hiệu 6"
+        }
+      ]
+    },
+    {
+      "title": "Chân dung ngoài trời",
+      "desc": "",
+      "featured": false,
+      "photos": [
+        {
+          "src": "",
+          "title": "Chân dung ngoài trời 1"
+        },
+        {
+          "src": "",
+          "title": "Chân dung ngoài trời 2"
+        },
+        {
+          "src": "",
+          "title": "Chân dung ngoài trời 3"
+        },
+        {
+          "src": "",
+          "title": "Chân dung ngoài trời 4"
+        },
+        {
+          "src": "",
+          "title": "Chân dung ngoài trời 5"
+        },
+        {
+          "src": "",
+          "title": "Chân dung ngoài trời 6"
+        }
+      ]
+    },
+    {
+      "title": "Concept studio màu",
+      "desc": "",
+      "featured": false,
+      "photos": [
+        {
+          "src": "",
+          "title": "Concept studio màu 1"
+        },
+        {
+          "src": "",
+          "title": "Concept studio màu 2"
+        },
+        {
+          "src": "",
+          "title": "Concept studio màu 3"
+        },
+        {
+          "src": "",
+          "title": "Concept studio màu 4"
+        },
+        {
+          "src": "",
+          "title": "Concept studio màu 5"
+        },
+        {
+          "src": "",
+          "title": "Concept studio màu 6"
+        }
+      ]
+    },
+    {
+      "title": "Chi tiết trang phục",
+      "desc": "",
+      "featured": false,
+      "photos": [
+        {
+          "src": "",
+          "title": "Chi tiết trang phục 1"
+        },
+        {
+          "src": "",
+          "title": "Chi tiết trang phục 2"
+        },
+        {
+          "src": "",
+          "title": "Chi tiết trang phục 3"
+        },
+        {
+          "src": "",
+          "title": "Chi tiết trang phục 4"
+        },
+        {
+          "src": "",
+          "title": "Chi tiết trang phục 5"
+        },
+        {
+          "src": "",
+          "title": "Chi tiết trang phục 6"
+        }
+      ]
+    },
+    {
+      "title": "Beauty close-up",
+      "desc": "",
+      "featured": false,
+      "photos": [
+        {
+          "src": "",
+          "title": "Beauty close-up 1"
+        },
+        {
+          "src": "",
+          "title": "Beauty close-up 2"
+        },
+        {
+          "src": "",
+          "title": "Beauty close-up 3"
+        },
+        {
+          "src": "",
+          "title": "Beauty close-up 4"
+        },
+        {
+          "src": "",
+          "title": "Beauty close-up 5"
+        },
+        {
+          "src": "",
+          "title": "Beauty close-up 6"
+        }
+      ]
+    },
+    {
+      "title": "Trang điểm cô dâu",
+      "desc": "",
+      "featured": false,
+      "photos": [
+        {
+          "src": "",
+          "title": "Trang điểm cô dâu 1"
+        },
+        {
+          "src": "",
+          "title": "Trang điểm cô dâu 2"
+        },
+        {
+          "src": "",
+          "title": "Trang điểm cô dâu 3"
+        },
+        {
+          "src": "",
+          "title": "Trang điểm cô dâu 4"
+        },
+        {
+          "src": "",
+          "title": "Trang điểm cô dâu 5"
+        },
+        {
+          "src": "",
+          "title": "Trang điểm cô dâu 6"
+        }
+      ]
+    },
+    {
+      "title": "Hội nghị & sự kiện",
+      "desc": "",
+      "featured": false,
+      "photos": [
+        {
+          "src": "",
+          "title": "Hội nghị & sự kiện 1"
+        },
+        {
+          "src": "",
+          "title": "Hội nghị & sự kiện 2"
+        },
+        {
+          "src": "",
+          "title": "Hội nghị & sự kiện 3"
+        },
+        {
+          "src": "",
+          "title": "Hội nghị & sự kiện 4"
+        },
+        {
+          "src": "",
+          "title": "Hội nghị & sự kiện 5"
+        },
+        {
+          "src": "",
+          "title": "Hội nghị & sự kiện 6"
+        }
+      ]
+    }
+  ]
+}

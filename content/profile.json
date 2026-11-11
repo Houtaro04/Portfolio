@@ -1,0 +1,31 @@
+{
+  "name": "Kyle",
+  "fullName": "Kyle Hoang",
+  "aboutImage": "",
+  "about": [
+    "Xin chào, mình là Kyle. Mình bắt đầu cầm máy từ năm 20xx và theo nghề nhiếp ảnh chuyên nghiệp đến nay đã hơn X năm. Mình thích những khung hình sạch, chân thực và có chiều sâu.",
+    "Mình nhận chụp ảnh cho nhà máy, sản phẩm, công trình (ảnh công nghiệp) và chân dung, thương hiệu, sự kiện (ảnh chuyên nghiệp). Làm việc rõ ràng, đúng hẹn, và luôn đặt nhu cầu của khách hàng lên đầu."
+  ],
+  "stats": [
+    {
+      "value": "X+",
+      "label": "Năm kinh nghiệm"
+    },
+    {
+      "value": "XXX+",
+      "label": "Dự án hoàn thành"
+    },
+    {
+      "value": "XX+",
+      "label": "Khách hàng"
+    }
+  ],
+  "tags": [
+    "Product",
+    "Industrial",
+    "Portrait",
+    "Brand",
+    "Event",
+    "Retouch"
+  ]
+}

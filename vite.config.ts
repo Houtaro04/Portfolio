@@ -7,7 +7,8 @@ const adminRoute = (): Plugin => ({
   name: 'admin-route',
   configureServer(server) {
     server.middlewares.use((req: { url?: string }, _res: unknown, next: () => void) => {
-      if (req.url && /^\/admin\/?(\?.*)?$/.test(req.url)) req.url = '/admin/index.html';
+      const m = req.url?.match(/^\/admin(\/sveltia)?\/?(\?.*)?$/);
+      if (m) req.url = `/admin${m[1] ?? ''}/index.html`;
       next();
     });
   },

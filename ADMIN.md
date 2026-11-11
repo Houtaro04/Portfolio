@@ -1,4 +1,4 @@
-# Trang quản trị nội dung (`/admin`)
+﻿# Trang quản trị nội dung (`/admin`)
 
 Khách hàng tự sửa nội dung web (chữ, ảnh, bộ ảnh, project, video, link mạng xã hội) bằng giao diện form, không cần đụng code. Công cụ dùng là **Decap CMS**, lưu nội dung vào các file JSON trong thư mục `content/`.
 
@@ -35,6 +35,17 @@ Mở **http://localhost:5173/admin/**, bấm **Login** (không hỏi mật khẩ
 - Bộ ảnh nào chưa có ảnh thật sẽ hiện khung màu giữ chỗ.
 - Khách **không** sửa được màu sắc, bố cục, hiệu ứng, những thứ này cần nhờ người làm web.
 
+## 2b. Bản thử Sveltia: chọn nhiều ảnh một lúc
+
+Trang `/admin/` (Decap) chỉ thêm được **từng ảnh một**. Để chọn và tải **nhiều ảnh cùng lúc**, có thêm bản thử dùng **Sveltia CMS** (cùng kiểu cấu hình, chạy song song, không ảnh hưởng `/admin/`):
+
+- Địa chỉ: `tenmien.com/admin/sveltia/` (cấu hình riêng ở `public/admin/sveltia/config.yml`, chỉ khác ô ảnh dùng `multiple: true`).
+- Đăng nhập: giống Decap, dùng kết nối GitHub qua Netlify đã cài. Có thêm cách dự phòng: nút **Sign In with Token** (dán mã truy cập cá nhân của GitHub, quyền *Contents: Read and write* cho repo).
+- Chạy thử trên máy: mở `http://localhost:5173/admin/sveltia/` bằng Chrome hoặc Edge, chọn **Work with Local Repository**, rồi chọn thư mục dự án `d:\KylePortfolio`. Không cần `npm run cms` cho bản này.
+- Một ô "Ảnh" có thể chứa nhiều ảnh. Web tự tách thành từng ảnh riêng (`expandPhotos` trong `src/data.ts`). Khi một ô có nhiều ảnh thì chú thích riêng không dùng được, ảnh sẽ tự đặt tên "Tên bộ ảnh 1, 2, 3...".
+- Phiên bản Sveltia được cố định trong `public/admin/sveltia/index.html`. Muốn nâng cấp thì đổi số phiên bản ở thẻ `<script>` đó.
+
+Nếu dùng ổn, có thể bỏ trang Decap cũ và chuyển `/admin/` sang Sveltia.
 ## 3. Đưa lên mạng để khách dùng thật
 
 Mình chưa kiểm thử phần này vì cần tài khoản GitHub và Netlify thật. Các bước dưới đây theo cách dùng phổ biến của Decap CMS. Tên các mục trong giao diện Netlify/GitHub có thể khác một chút, nếu gặp lỗi thì báo lại để chỉnh.

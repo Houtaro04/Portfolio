@@ -47,7 +47,16 @@ collections:
                 required: false
                 summary: "{{fields.title}} {{fields.src}}"
                 fields:
-                  - { label: "Ảnh", name: src, widget: image, required: false }
+                  # allow_multiple: cho phép chọn nhiều ảnh một lúc trong thư viện ảnh (nếu bản Decap này hỗ trợ).
+                  # Nếu chọn nhiều, giá trị lưu là danh sách đường dẫn; web tự tách mỗi đường dẫn thành một ảnh.
+                  - label: "Ảnh"
+                    name: src
+                    widget: image
+                    required: false
+                    media_library:
+                      allow_multiple: true
+                      config:
+                        multiple: true
                   - { label: "Chú thích (tuỳ chọn)", name: title, widget: string, required: false }
 
       # ---------------------------------------------------------------- Công nghiệp

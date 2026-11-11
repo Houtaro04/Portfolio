@@ -36,8 +36,9 @@ import type {
 } from './types';
 
 /* ---------- Kiểu "thô" của các file JSON (mọi trường đều có thể thiếu) ---------- */
-interface RawPhoto { src?: string; title?: string }
-interface RawSet { title?: string; desc?: string; featured?: boolean; cover?: string; photos?: RawPhoto[] }
+/** `src` có thể là một đường dẫn hoặc danh sách đường dẫn (khi CMS chọn nhiều ảnh một lúc). */
+interface RawPhoto { src?: string | string[]; title?: string }
+interface RawSet { title?: string; desc?: string; featured?: boolean; cover?: string; photos?: (RawPhoto | string)[] }
 interface RawProject { title?: string; desc?: string; featured?: boolean; cover?: string; sets?: RawSet[] }
 interface RawVideo { title?: string; desc?: string; duration?: string; thumb?: string; youtubeId?: string; src?: string }
 interface RawSets { label?: string; desc?: string; sets?: RawSet[] }
@@ -73,7 +74,15 @@ const hueOf = (s: string): number => [...s].reduce((h, c) => (h * 31 + c.charCod
 
 const PLACEHOLDER_RATIOS = [1.5, 0.8, 1.33, 1, 0.75, 1.78];
 
-const toPhoto = (raw: RawPhoto, setTitle: string, i: number, hue: number): PhotoItem => {
+/** Tách mục ảnh có nhiều đường dẫn thành nhiều ảnh; chấp nhận cả chuỗi trần ("images/a.jpg"). */
+const expandPhotos = (raws: (RawPhoto | string)[]): { src?: string; title?: string }[] =>
+  raws.flatMap((p): { src?: string; title?: string }[] => {
+    if (typeof p === 'string') return [{ src: p }];
+    const srcs = Array.isArray(p.src) ? p.src : [p.src];
+    return srcs.map((src) => ({ src, title: srcs.length === 1 ? p.title : undefined }));
+  });
+
+const toPhoto = (raw: { src?: string; title?: string }, setTitle: string, i: number, hue: number): PhotoItem => {
   const src = raw.src?.trim() ?? '';
   return {
     src,
@@ -99,7 +108,7 @@ const buildSets = (raws: RawSet[]): PhotoSet[] => {
       desc: s.desc ?? '',
       featured: !!s.featured,
       cover: toCover(s.cover, title),
-      photos: (s.photos ?? []).map((p, n) => toPhoto(p, title, n, hue)),
+      photos: expandPhotos(s.photos ?? []).map((p, n) => toPhoto(p, title, n, hue)),
     };
   });
 };

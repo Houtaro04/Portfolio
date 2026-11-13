@@ -15,5 +15,12 @@ export const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fi
 
 if (hasFinePointer && !prefersReducedMotion) root.classList.add('has-cursor');
 
+/**
+ * "Chế độ nhẹ" cho điện thoại / máy cảm ứng / màn hẹp: bỏ các hiệu ứng nặng (nền parallax, hạt phim, kính mờ,
+ * chữ óng ánh động, chuyển cảnh lưới 15 ô, cuộn Lenis, chân trang kéo rèm). Gắn class "lite" để CSS biết.
+ */
+export const isLite = !hasFinePointer || window.matchMedia('(max-width: 820px)').matches;
+if (isLite) root.classList.add('lite');
+
 // Nếu vừa chuyển trang bằng hiệu ứng chuyển cảnh (bấm vào sản phẩm), dựng màn che và kéo lên
 resumeTransition();

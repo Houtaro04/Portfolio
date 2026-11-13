@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { RefObject } from 'react';
 import Lenis from 'lenis';
 import { SCROLL_MODE } from './data';
-import { prefersReducedMotion } from './boot';
+import { isLite, prefersReducedMotion } from './boot';
 import { usePreloaderDone } from './preloader';
 
 /**
@@ -37,8 +37,13 @@ export function useReveal<T extends Element = HTMLElement>(): [RefObject<T>, boo
 }
 
 /**
- * Gán tiến độ cuộn trang (0 → 1) vào biến CSS --progress của <html>.
- * Dùng cho thanh tiến độ phía trên và hiệu ứng nền parallax (xem body::before trong styles.css).
+ * Gán tiến độ cuộn trang (0 → 1) vào biến CSS --progress.
+ * Dùng cho thanh tiến độ phía trên và hiệu ứng nền parallax (xem body::before / .page::before trong styles.css).
+ *
+ * Tối ưu: biến được gán lên ĐÚNG các phần tử cần dùng (thanh tiến độ, khối .page, <body>) và khai báo
+ * `@property --progress { inherits: false }` trong CSS. Nếu gán lên <html> thì biến kế thừa xuống mọi phần tử và
+ * mỗi khung hình cuộn trình duyệt phải tính lại style của cả trang (rất giật trên điện thoại).
+ * Ở chế độ nhẹ (điện thoại) không có nền parallax nên chỉ cập nhật thanh tiến độ.
  */
 export function useScrollProgress(): void {
   useEffect(() => {
@@ -47,7 +52,11 @@ export function useScrollProgress(): void {
       raf = 0;
       const max = document.documentElement.scrollHeight - window.innerHeight;
       const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-      document.documentElement.style.setProperty('--progress', String(p));
+      const value = String(p);
+      document
+        .querySelectorAll<HTMLElement>(isLite ? '.progress' : '.progress,.page')
+        .forEach((el) => el.style.setProperty('--progress', value));
+      if (!isLite) document.body.style.setProperty('--progress', value);
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -74,6 +83,7 @@ export function useActiveSection(ids: readonly string[]): string {
   const [active, setActive] = useState(ids[0]);
 
   useEffect(() => {
+    if (isLite) return; // chế độ nhẹ (điện thoại): menu bên trái bị ẩn nên không cần theo dõi, đỡ đọc layout mỗi khung hình
     let raf = 0;
     const update = () => {
       raf = 0;
@@ -210,7 +220,8 @@ export function useSmoothScroll(locked = false): void {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    if (SCROLL_MODE !== 'smooth' || prefersReducedMotion) return;
+    // Cảm ứng / màn hẹp: dùng cuộn gốc của trình duyệt (mượt và nhẹ hơn nhiều so với tự mô phỏng quán tính)
+    if (SCROLL_MODE !== 'smooth' || prefersReducedMotion || isLite) return;
     const lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
     lenisRef.current = lenis;
 

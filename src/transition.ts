@@ -39,6 +39,7 @@ const ROWS = 3;
 const MAIN = Math.floor(ROWS / 2) * COLS + Math.floor(COLS / 2); // ô chính nằm giữa lưới
 const ZOOM_MS = 1150; // thời gian phóng lưới + hiện tên
 const REVEAL_MS = 1050; // thời gian kéo màn che lên
+const SIMPLE_MS = 800; // chế độ nhẹ: thời gian quét màn che lên ô được chọn
 
 /** Tô nền một ô: ảnh thật hoặc dải màu giữ chỗ theo hue. */
 const paint = (el: HTMLElement, cover: Cover): void => {
@@ -96,6 +97,19 @@ const playOut = async (info: TransitionInfo): Promise<HTMLElement> => {
   const covers = info.covers.length ? info.covers : [{}];
   const n = covers.length;
   const el = makeOverlay();
+
+  // Chế độ nhẹ (điện thoại): không dựng lưới 15 ô toàn màn hình (rất nặng), chỉ quét lên ô được chọn
+  if (root.classList.contains('lite')) {
+    el.classList.add('simple');
+    el.append(buildCell(covers[info.index] ?? covers[0], true, info));
+    document.body.append(el);
+    root.classList.add('is-transitioning');
+    await frame();
+    el.classList.add('in');
+    await wait(SIMPLE_MS);
+    return el;
+  }
+
   const grid = document.createElement('div');
   grid.className = 'pt-grid';
   for (let c = 0; c < COLS * ROWS; c++) {

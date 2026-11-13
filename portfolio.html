@@ -8,7 +8,8 @@
   <meta name="theme-color" content="#0c0c0d">
   <!-- Bật chuyển trang mượt (Chrome/Edge) ngay từ đầu trang, kể cả khi CSS chính nạp chậm -->
   <style>@view-transition { navigation: auto; }</style>
-  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <!-- Bật "chế độ nhẹ" cho điện thoại ngay từ đầu, trước khi trình duyệt tải CSS/ảnh nền (tránh tải nhầm ảnh lớn của máy tính) -->
+  <script>if(!matchMedia('(hover: hover) and (pointer: fine)').matches||matchMedia('(max-width: 820px)').matches)document.documentElement.classList.add('lite')</script>  <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">

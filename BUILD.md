@@ -104,6 +104,19 @@ Các hiệu ứng khác dùng được ở cả hai kiểu cuộn (đều là CS
 
 Người dùng bật "giảm chuyển động" trong hệ điều hành thì màn hình mở đầu, con trỏ riêng, Lenis và các animation đều tự tắt.
 
+### Chế độ nhẹ cho điện thoại (`html.lite`)
+
+Trên điện thoại / máy cảm ứng / màn dưới 820px, web tự vào **chế độ nhẹ** (class `lite` trên `<html>`, bật bằng một đoạn script nhỏ ở đầu `index.html` và `portfolio.html` để chạy trước cả CSS và ảnh nền). Chế độ này bỏ các hiệu ứng nặng để cuộn mượt và đỡ tốn pin/dữ liệu:
+
+- Dùng cuộn gốc của trình duyệt thay cho Lenis; ẩn menu chấm bên trái (đè lên chữ trên màn hẹp).
+- Nền và ảnh hero dùng bản nhỏ (`public/images/bg-m.jpg`, `hero-bg-m.jpg`), nền đứng yên thay vì chuyển động/phóng to.
+- Bỏ kính mờ ở header, hạt phim tĩnh, chữ óng ánh và tia lấp lánh không chuyển động.
+- Chân trang liên hệ nằm tuần tự cuối trang (không "kéo rèm"); ảnh liên hệ làm nền mờ.
+- Chuyển cảnh khi bấm sản phẩm chỉ quét một màn che (không dựng lưới 15 ô).
+- Mục Sản phẩm: tab một hàng cuộn ngang; trang `portfolio.html` hiện 2 thẻ mỗi hàng.
+
+Nếu thay ảnh nền hoặc ảnh hero, nhớ tạo luôn bản nhỏ cho điện thoại (nền ~720px chiều rộng, hero ~1800px) và ghi đè đường dẫn trong khối "TỐI ƯU & RESPONSIVE CHO ĐIỆN THOẠI" của `src/styles.css`.
+
 ### Logo
 
 Logo là file `public/images/logo.png` (nền trong suốt, chữ trắng). Muốn đổi logo, thay file này bằng ảnh mới cùng tên, nên cắt sát chữ và rộng khoảng 800px.

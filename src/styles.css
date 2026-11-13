@@ -577,3 +577,91 @@ html.is-transitioning{overflow:hidden}
   .item>.ph,.item>img{clip-path:none}
   .item.album .cap,.item.video .play{opacity:1}
 }
+
+/* =====================================================================================
+   TỐI ƯU & RESPONSIVE CHO ĐIỆN THOẠI
+   ===================================================================================== */
+
+/* --progress chỉ có tác dụng trên chính phần tử được gán, không kế thừa xuống con (xem useScrollProgress).
+   Nếu để kế thừa thì mỗi khung hình cuộn trình duyệt tính lại style của cả trang. */
+@property --progress{syntax:"<number>";inherits:false;initial-value:0}
+
+/* Trình duyệt cũ chưa hiểu đơn vị svh: dùng vh */
+@supports not (height:100svh){
+  :root{--contact-h:100vh}
+  .hero,.section{min-height:100vh}
+  .pin-sticky{height:100vh}
+}
+
+/* Màn chuyển cảnh: tối ảnh bằng một lớp phủ thay vì filter:brightness (filter trên 15 lớp ảnh toàn màn hình rất nặng) */
+.pt-cell i{filter:none}
+.pt-cell::before{content:"";position:absolute;inset:0;z-index:1;background:rgba(0,0,0,.5)}
+.pt-cell.main::before{background:rgba(0,0,0,.26)}
+.pt-label{z-index:2}
+/* Chế độ nhẹ: chỉ quét một màn che lên ô được chọn */
+.pt.simple{opacity:1;clip-path:inset(100% 0 0 0)}
+.pt.simple .pt-cell{position:absolute;inset:0}
+.pt.simple.in{clip-path:inset(0);transition:clip-path .75s cubic-bezier(.76,0,.24,1)}
+.pt.simple.in.out{clip-path:inset(0 0 100% 0);transition:clip-path .85s cubic-bezier(.76,0,.24,1)}
+
+/* ---- "Chế độ nhẹ" (html.lite = điện thoại / cảm ứng / màn hẹp): bỏ các hiệu ứng nặng ---- */
+html.lite.mode-smooth{scroll-behavior:smooth}   /* không dùng Lenis nên bấm link neo cuộn mượt bằng trình duyệt */
+html.lite .side-nav{display:none}               /* chấm menu bên trái đè lên chữ trên màn hẹp */
+
+/* Nền: ảnh nhỏ (33KB thay vì 381KB), đứng yên (không chuyển động / phóng to), cao đúng 1 màn hình */
+html.lite body::before,html.lite .page::before{height:100svh;transform:none;transition:none;will-change:auto;
+  background-image:linear-gradient(rgba(12,12,13,var(--bg-overlay)),rgba(12,12,13,var(--bg-overlay))),url("/images/bg-m.jpg")}
+html.lite.has-reveal body::before{display:block}
+html.lite .page::before{display:none}
+html.lite .page{background:transparent;clip-path:none;border-bottom:0}
+
+/* Chân trang: không "kéo rèm" (khối fixed + clip-path dễ lỗi/nặng trên điện thoại), nằm tuần tự cuối trang */
+html.lite .contact-spacer{height:0}
+html.lite .contact{position:relative;height:auto;min-height:100svh;visibility:visible!important}
+html.lite .contact-inner{height:auto;min-height:100svh;transform:none;padding-bottom:96px}
+html.lite .contact-band{display:block;position:absolute;inset:0;height:auto;border-radius:0;opacity:.35;z-index:0}
+html.lite .contact-band::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(17,15,13,.45),rgba(17,15,13,.92))}
+html.lite .contact-band img{transform:none;object-position:66% 50%}
+html.lite .contact-copy{position:relative;z-index:1}
+html.lite .contact-foot{z-index:2}
+
+/* Header: bỏ kính mờ (backdrop-filter tốn GPU khi cuộn), dùng nền đặc */
+html.lite .site-header-inner{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(22,22,24,.84);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+
+/* Hero: ảnh nhỏ hơn, lớp phủ tối dọc (chữ nằm phía dưới), bỏ mặt nạ, bỏ tia lấp lánh và chữ óng ánh chuyển động */
+html.lite .hero-bg{background:linear-gradient(180deg,rgba(12,12,13,.4) 0%,rgba(12,12,13,.55) 55%,rgba(12,12,13,.9) 100%),url("/images/hero-bg-m.jpg") 66% 50%/cover no-repeat;
+  -webkit-mask-image:none;mask-image:none}
+html.lite .spark{display:none}
+html.lite .shimmer,html.lite .hero h1 em{animation:none!important;filter:none!important}
+
+/* Hạt phim: tĩnh và vừa khít màn hình (không lớp lớn nhích từng khung hình) */
+html.lite body::after{animation:none;inset:0;opacity:.05}
+
+/* Thẻ ảnh: bỏ hiệu ứng phóng 1.3 → 1 của ảnh bên trong, chỉ giữ cú hé lộ */
+html.lite .item>.ph,html.lite .item>img,html.lite .item.in>.ph,html.lite .item.in>img{transform:none;transition:clip-path 1s var(--ease-out) var(--d,0ms)}
+
+/* ---- Bố cục điện thoại ---- */
+@media (max-width:820px){
+  /* Mục Sản phẩm: tab một hàng cuộn ngang (trước đây xếp thành 4 hàng cao ngất làm thẻ ảnh bị đẩy ra ngoài màn hình) */
+  .section-portfolio{padding-block:96px 36px}
+  .pin-sticky{--rail-h:clamp(240px,calc(100svh - 372px),520px)}
+  .pf-bar{display:block}
+  .section-portfolio .tabs{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;margin:14px calc(var(--bleed) * -1) 0 0;padding-right:var(--bleed);scrollbar-width:none}
+  .section-portfolio .tabs::-webkit-scrollbar{display:none}
+  .section-portfolio .tab{flex:none;padding:10px 14px;font-size:.78rem}
+  .section-portfolio .tab-desc{margin:12px 0 14px;font-size:.88rem;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+  .section-portfolio .section-head::after{margin-top:12px}
+  .rail-more{width:170px;padding:18px}
+}
+
+/* Khung giữ chỗ trong thẻ: không hiện chữ "Ảnh giữ chỗ" (nó đè lên tên thẻ) */
+.item .ph{font-size:0}
+
+/* Trang portfolio trên điện thoại: 2 thẻ mỗi hàng (trước đây mỗi thẻ chiếm cả hàng cao ~540px nên phải cuộn rất dài); video vẫn 1 cột */
+@media (max-width:540px){
+  .albums,.gallery{grid-template-columns:repeat(2,1fr);gap:8px}
+  .albums.videos{grid-template-columns:1fr}
+  .item.album .cap{padding:60px 12px 12px}
+  .item.album .cap strong{font-size:1.02rem}
+  .item.album .cap small{font-size:.62rem;letter-spacing:.08em}
+}

@@ -156,6 +156,7 @@ collections:
           - { label: "Số điện thoại hiển thị", name: phone, widget: string, required: false }
           - { label: "Số điện thoại dạng link (vd tel:+84901234567)", name: phoneHref, widget: string, required: false }
           - { label: "Email", name: email, widget: string, required: false }
+          - { label: "Ảnh lớn bên phải phần liên hệ ở cuối trang", name: image, widget: image, required: false }
 
       # ---------------------------------------------------------------- Cài đặt
       - label: "Cài đặt chung"
@@ -171,3 +172,11 @@ collections:
               - { label: "Công nghiệp", value: industrial }
               - { label: "Project", value: projects }
               - { label: "Video hậu trường", value: bts }
+          - label: "Kiểu cuộn trang"
+            name: scrollMode
+            widget: select
+            default: smooth
+            hint: "Cuộn mượt liên tục (như các web tham khảo) hoặc cuộn dừng từng mục."
+            options:
+              - { label: "Cuộn mượt liên tục", value: smooth }
+              - { label: "Cuộn dừng từng mục", value: snap }

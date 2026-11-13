@@ -1,4 +1,5 @@
 {
   "featuredCount": 4,
-  "defaultCategory": "pro"
+  "defaultCategory": "pro",
+  "scrollMode": "smooth"
 }

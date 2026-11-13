@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import Media from './Media';
 import { useReveal } from '../hooks';
 import type { PhotoItem } from '../types';
@@ -17,8 +18,9 @@ export default function GalleryItem({ item, index, onOpen }: GalleryItemProps) {
     <button
       ref={ref}
       className={`item${visible ? ' in' : ''}`}
-      style={{ transitionDelay: `${(index % COLS) * 110}ms` }}
+      style={{ '--d': `${(index % COLS) * 110}ms` } as CSSProperties}
       aria-label={`Xem ảnh: ${item.title}`}
+      data-cursor="Xem"
       onClick={onOpen}
     >
       <Media item={item} fill />

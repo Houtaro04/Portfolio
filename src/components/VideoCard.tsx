@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import Media from './Media';
 import { useReveal } from '../hooks';
 import type { VideoItem } from '../types';
@@ -15,8 +16,9 @@ export default function VideoCard({ video, index, onOpen }: VideoCardProps) {
     <button
       ref={ref}
       className={`item album video${visible ? ' in' : ''}`}
-      style={{ transitionDelay: `${index * 120}ms` }}
+      style={{ '--d': `${index * 120}ms` } as CSSProperties}
       aria-label={`Xem video: ${video.title}`}
+      data-cursor="Play"
       onClick={onOpen}
     >
       <Media item={{ src: video.thumb ?? '', title: video.title, hue: video.hue }} fill label="Video" />

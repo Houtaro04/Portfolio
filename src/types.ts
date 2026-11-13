@@ -100,6 +100,8 @@ export interface SocialLink {
 }
 
 export interface Contact {
+  /** Ảnh lớn bên phải phần liên hệ ở cuối trang (đường dẫn trong public/). */
+  image?: string;
   messenger: string;
   phone: string;
   phoneHref: string;

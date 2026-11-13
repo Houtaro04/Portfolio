@@ -154,6 +154,7 @@ export const PROFILE: Profile = profileJson as unknown as Profile;
 export const SOCIALS: SocialLink[] = (contactJson as unknown as { socials: SocialLink[] }).socials;
 
 export const CONTACT: Contact = {
+  image: (contactJson as { image?: string }).image?.trim() || undefined,
   messenger: contactJson.messenger,
   phone: contactJson.phone,
   phoneHref: contactJson.phoneHref,
@@ -162,6 +163,14 @@ export const CONTACT: Contact = {
 
 /** Số bộ ảnh / project / video nổi bật hiện ở trang chủ cho mỗi tab. */
 export const FEATURED_COUNT: number = Math.max(1, Number(settingsJson.featuredCount) || 4);
+
+/**
+ * Kiểu cuộn trang (content/settings.json → scrollMode):
+ *   "smooth" = cuộn mượt liên tục có quán tính (Lenis), như các web tham khảo
+ *   "snap"   = cuộn dừng từng mục (scroll-snap của trình duyệt)
+ */
+export const SCROLL_MODE: 'smooth' | 'snap' =
+  (settingsJson as { scrollMode?: string }).scrollMode === 'snap' ? 'snap' : 'smooth';
 
 /* ---------- Portfolio ---------- */
 

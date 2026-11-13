@@ -59,7 +59,7 @@ Nội dung nằm trong các **file JSON ở thư mục `content/`**, không còn
 | `content/projects.json` | tab **Project**: mỗi project gồm nhiều bộ ảnh |
 | `content/bts.json` | tab **Video hậu trường** |
 | `content/contact.json` | mạng xã hội, Messenger, điện thoại, email |
-| `content/settings.json` | số mục nổi bật ở trang chủ (`featuredCount`, mặc định 4) và tab mở sẵn (`defaultCategory`, hiện là `pro`) |
+| `content/settings.json` | số mục nổi bật ở trang chủ (`featuredCount`, mặc định 4), tab mở sẵn (`defaultCategory`, hiện là `pro`) và kiểu cuộn trang (`scrollMode`, xem mục "Hiệu ứng và kiểu cuộn") |
 
 - Mỗi **bộ ảnh** có `title`, `desc`, `featured` (true = hiện ở trang chủ), `cover` (ảnh bìa, tùy chọn) và `photos` (danh sách `{ "src": ..., "title": ... }`). Bỏ trống `cover` thì dùng ảnh đầu tiên.
 - Mỗi **project** có `title`, `desc`, `featured`, `cover` (tùy chọn) và `sets` (danh sách bộ ảnh như trên).
@@ -76,6 +76,33 @@ Nội dung nằm trong các **file JSON ở thư mục `content/`**, không còn
 - Vị trí nằm trong URL, ví dụ `portfolio.html?cat=pro&set=chan-dung-doanh-nhan` hoặc `portfolio.html?cat=projects&project=su-kien&set=hoi-nghi`.
 
 Thẻ ảnh có tỉ lệ khung 4×6 (dọc). Đổi tỉ lệ bằng biến `--card-ratio` ở `.albums` và `.gallery` trong `src/styles.css`.
+
+### Hiệu ứng và kiểu cuộn
+
+Kiểu cuộn trang chọn ở `content/settings.json` → `scrollMode` (hoặc trong `/admin` → Cài đặt chung → "Kiểu cuộn trang"):
+
+- `"smooth"` (đang dùng): cuộn mượt liên tục có quán tính bằng thư viện **Lenis**, giống các web tham khảo.
+- `"snap"`: cuộn dừng từng mục (scroll-snap của trình duyệt), không dùng Lenis.
+
+Hai kiểu này **không dùng chung được** (Lenis và scroll-snap giằng co nhau), nên chỉ chọn một. Muốn quay lại cuộn dừng từng mục thì đổi giá trị thành `"snap"` và build lại, không cần sửa code.
+
+Các hiệu ứng khác dùng được ở cả hai kiểu cuộn (đều là CSS thuần cộng một ít React, không thêm thư viện nào ngoài Lenis):
+
+| Hiệu ứng | File chính |
+| --- | --- |
+| Màn hình mở đầu (số đếm, chỉ hiện lần đầu trong phiên) | `components/Preloader.tsx`, `preloader.ts` |
+| Con trỏ chuột riêng, hiện chữ "Xem" / "Play" trên thẻ (thuộc tính `data-cursor`) | `components/Cursor.tsx` |
+| Hạt phim phủ toàn trang | `body::after` trong `styles.css` |
+| Tiêu đề hiện từng dòng | `components/Lines.tsx` |
+| Thẻ ảnh hé lộ bằng `clip-path` | `.item` trong `styles.css` |
+| Chuyển trang mượt giữa trang chủ và portfolio (Chrome/Edge) | `@view-transition` trong `styles.css` |
+| Mục **Sản phẩm** cuộn ngang theo cuộn dọc: cuộn chuột bình thường, mục này "ghim" trên màn hình và dải thẻ chạy sang ngang, xem hết thì trang cuộn xuống tiếp; có thanh tiến độ | `components/Portfolio.tsx`, hook `useHorizontalPin`, khối "MỤC SẢN PHẨM" trong `styles.css` |
+| **Chân trang "kéo rèm"** gộp Social + bản quyền: khối liên hệ cố định phía sau, cuộn tới cuối thì nội dung cuộn đi để lộ ra | `components/Contact.tsx`, hook `useCurtainReveal`, khối "CHÂN TRANG KÉO RÈM" trong `styles.css` |
+| **Chuyển cảnh lưới ảnh** khi bấm vào sản phẩm (lưới 5 cột phóng vào ô được chọn, rồi màn che kéo lên) | `transition.ts`, `components/CoverCard.tsx`, khối "CHUYỂN CẢNH" trong `styles.css` |
+
+Ảnh lớn bên phải phần liên hệ cuối trang lấy từ `content/contact.json` → `image` (hoặc `/admin` → Mạng xã hội và liên hệ). Danh sách dòng liên hệ gồm các mạng xã hội, Messenger, điện thoại và email trong cùng file đó. Trang `portfolio.html` vẫn dùng thanh footer cố định mỏng.
+
+Người dùng bật "giảm chuyển động" trong hệ điều hành thì màn hình mở đầu, con trỏ riêng, Lenis và các animation đều tự tắt.
 
 ### Logo
 

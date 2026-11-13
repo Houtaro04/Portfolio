@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import Reveal from './Reveal';
+import { usePreloaderDone } from '../preloader';
 
 /** Các tia lấp lánh quanh slogan: vị trí (% theo khung slogan), kích thước (px), độ trễ (s). */
 const SPARKS = [
@@ -13,10 +14,11 @@ const SPARKS = [
 ];
 
 export default function Hero() {
+  const ready = usePreloaderDone(); // chờ màn hình mở đầu kéo lên rồi mới hiện chữ
   return (
     <section className="hero" id="top">
       <div className="hero-bg" aria-hidden="true" />
-      <Reveal variant="stagger" className="hero-text">
+      <Reveal variant="stagger" className="hero-text" hold={!ready}>
         <p className="eyebrow">Photographer</p>
         <h1>
           {SPARKS.map((p, i) => (

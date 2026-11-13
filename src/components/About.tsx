@@ -1,3 +1,4 @@
+import Lines from './Lines';
 import Media from './Media';
 import Reveal from './Reveal';
 import { PROFILE } from '../data';
@@ -5,9 +6,9 @@ import { PROFILE } from '../data';
 export default function About() {
   return (
     <section className="section" id="about">
-      <Reveal className="section-head" variant="left">
+      <Reveal className="section-head" variant="none">
         <p className="eyebrow">Về mình</p>
-        <h2>Người đứng sau<br />ống kính.</h2>
+        <h2><Lines lines={['Người đứng sau', 'ống kính.']} /></h2>
       </Reveal>
 
       <div className="about-grid">

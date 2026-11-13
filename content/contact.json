@@ -22,5 +22,6 @@
   "messenger": "https://m.me/",
   "phone": "0xxx xxx xxx",
   "phoneHref": "tel:+84000000000",
-  "email": "hello@example.com"
+  "email": "hello@example.com",
+  "image": "images/hero-bg.jpg"
 }

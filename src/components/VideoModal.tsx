@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { asset } from '../hooks';
 import type { VideoItem } from '../types';
 
@@ -46,9 +47,11 @@ export default function VideoModal({ video, onClose }: VideoModalProps) {
     );
   }
 
-  return (
+  // Hiện ở <body> (không nằm trong khối trang có clip-path) để luôn phủ kín và nằm trên header/menu
+  return createPortal(
     <div
       className="lightbox"
+      data-lenis-prevent
       role="dialog"
       aria-modal="true"
       aria-label={video.title}
@@ -59,6 +62,7 @@ export default function VideoModal({ video, onClose }: VideoModalProps) {
         <div className="vid-frame">{player}</div>
         <figcaption>{video.title}{video.desc ? `  ·  ${video.desc}` : ''}</figcaption>
       </figure>
-    </div>
+    </div>,
+    document.body
   );
 }

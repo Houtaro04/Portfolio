@@ -9,7 +9,8 @@ import VideoCard from './components/VideoCard';
 import VideoModal from './components/VideoModal';
 import Footer from './components/Footer';
 import { PORTFOLIO, projectCover, projectPhotoCount, setCover } from './data';
-import { useScrollProgress } from './hooks';
+import Cursor from './components/Cursor';
+import { useScrollProgress, useSmoothScroll } from './hooks';
 import { buildQuery, readRoute, resolveRoute } from './routes';
 import type { Route } from './routes';
 import type { VideoItem } from './types';
@@ -23,6 +24,7 @@ import type { VideoItem } from './types';
  */
 export default function PortfolioPage() {
   useScrollProgress();
+  useSmoothScroll();
   const [route, setRoute] = useState<Route>(() => readRoute());
   const [view, setView] = useState<number | null>(null); // index ảnh đang mở trong lightbox
   const [video, setVideo] = useState<VideoItem | null>(null);
@@ -147,7 +149,7 @@ export default function PortfolioPage() {
 
     body = (
       <>
-        <Reveal className="section-head" variant="left">
+        <Reveal className="section-head" variant="none">
           <p className="eyebrow">Portfolio</p>
           <h1 className="pf-title">{headline}</h1>
         </Reveal>
@@ -165,6 +167,7 @@ export default function PortfolioPage() {
 
   return (
     <>
+      <Cursor />
       <header className="topbar">
         <Logo href="./" />
         <a className="back" href="index.html#portfolio"><span aria-hidden="true">←</span> Về trang chủ</a>

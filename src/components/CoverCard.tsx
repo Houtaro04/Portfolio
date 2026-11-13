@@ -1,6 +1,7 @@
-import type { MouseEvent } from 'react';
+import type { CSSProperties, MouseEvent } from 'react';
 import Media from './Media';
 import { useReveal } from '../hooks';
+import { infoFromCard, transitionNavigate, transitionRoute } from '../transition';
 import type { PhotoItem } from '../types';
 
 interface CoverCardProps {
@@ -11,19 +12,21 @@ interface CoverCardProps {
   /** Đích của thẻ (là link thật nên bấm giữa/mở tab mới đều được). */
   href: string;
   index: number;
-  /** Nếu có: chuyển trang trong cùng trang (không tải lại) thay vì theo href. */
+  /** Nếu có: đổi cảnh trong cùng trang (không tải lại) thay vì chuyển trang theo href. */
   onNavigate?: () => void;
 }
 
-/** Thẻ ảnh bìa dùng cho project và bộ ảnh. */
+/** Thẻ ảnh bìa dùng cho project và bộ ảnh. Bấm vào thì chạy hiệu ứng chuyển cảnh lưới ảnh (xem transition.ts). */
 export default function CoverCard({ cover, title, meta, href, index, onNavigate }: CoverCardProps) {
   const [ref, visible] = useReveal<HTMLAnchorElement>();
 
   const onClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    // Giữ nguyên hành vi mặc định khi mở tab mới (Ctrl/Cmd/chuột giữa)
-    if (!onNavigate || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    // Giữ nguyên hành vi mặc định khi mở tab mới (Ctrl/Cmd/Shift/chuột giữa)
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
     e.preventDefault();
-    onNavigate();
+    const info = infoFromCard(e.currentTarget, title, meta);
+    if (onNavigate) void transitionRoute(info, onNavigate);
+    else void transitionNavigate(info, href);
   };
 
   return (
@@ -31,8 +34,9 @@ export default function CoverCard({ cover, title, meta, href, index, onNavigate 
       ref={ref}
       href={href}
       className={`item album${visible ? ' in' : ''}`}
-      style={{ transitionDelay: `${index * 120}ms` }}
+      style={{ '--d': `${index * 120}ms` } as CSSProperties}
       aria-label={`${title} — ${meta}`}
+      data-cursor="Xem"
       onClick={onClick}
     >
       <Media item={cover} fill />

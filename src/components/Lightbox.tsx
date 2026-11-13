@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import type { TouchEvent } from 'react';
 import Media from './Media';
 import type { PhotoItem } from '../types';
@@ -49,9 +50,11 @@ export default function Lightbox({ items, index, onClose, onChange }: LightboxPr
     touchX.current = null;
   };
 
-  return (
+  // Hiện ở <body> (không nằm trong khối trang có clip-path) để luôn phủ kín và nằm trên header/menu
+  return createPortal(
     <div
       className="lightbox"
+      data-lenis-prevent
       role="dialog"
       aria-modal="true"
       aria-label={item.title}
@@ -68,6 +71,7 @@ export default function Lightbox({ items, index, onClose, onChange }: LightboxPr
         <figcaption>{item.title}  ·  {index + 1}/{items.length}</figcaption>
       </figure>
       <button className="lb-nav lb-next" aria-label="Ảnh sau" onClick={() => go(1)}>›</button>
-    </div>
+    </div>,
+    document.body
   );
 }

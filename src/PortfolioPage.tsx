@@ -12,6 +12,7 @@ import { PORTFOLIO, projectCover, projectPhotoCount, setCover } from './data';
 import Cursor from './components/Cursor';
 import { useScrollProgress, useSmoothScroll } from './hooks';
 import { buildQuery, readRoute, resolveRoute } from './routes';
+import { transitionHome } from './transition';
 import type { Route } from './routes';
 import type { VideoItem } from './types';
 
@@ -45,6 +46,13 @@ export default function PortfolioPage() {
     setView(null);
     setVideo(null);
     window.scrollTo(0, 0);
+  };
+
+  /** Về trang chủ (nút "Về trang chủ" và logo) có chuyển cảnh lưới ảnh; Ctrl/Shift+bấm vẫn mở như link thường. */
+  const goHome = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    e.preventDefault();
+    void transitionHome(href);
   };
 
   const { cat } = route;
@@ -169,8 +177,10 @@ export default function PortfolioPage() {
     <>
       <Cursor />
       <header className="topbar">
-        <Logo href="./" />
-        <a className="back" href="index.html#portfolio"><span aria-hidden="true">←</span> Về trang chủ</a>
+        <Logo href="./" onClick={(e) => goHome(e, './')} />
+        <a className="back" href="index.html#portfolio" onClick={(e) => goHome(e, 'index.html#portfolio')}>
+          <span aria-hidden="true">←</span> Về trang chủ
+        </a>
       </header>
 
       <main className="pf-main">{body}</main>

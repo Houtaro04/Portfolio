@@ -51,6 +51,12 @@ export const markPreloaderDone = (): void => {
 
 export const isPreloaderDone = (): boolean => ready;
 
+/**
+ * Có cần hiện màn hình mở đầu không: chỉ lần đầu trong phiên. Khác isPreloaderDone: khi đang có chuyển cảnh chờ
+ * (vd. từ trang portfolio về trang chủ) thì "chưa sẵn sàng" nhưng KHÔNG được hiện lại màn hình mở đầu.
+ */
+export const preloaderNeeded = (): boolean => !reduced && !alreadySeen();
+
 /** true khi trang sẵn sàng hiện hiệu ứng vào (không còn màn che mở đầu / chuyển cảnh). */
 export const usePreloaderDone = (): boolean =>
   useSyncExternalStore(

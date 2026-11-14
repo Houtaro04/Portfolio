@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import Logo from './Logo';
-import { isPreloaderDone, markPreloaderDone } from '../preloader';
+import { isPreloaderDone, markPreloaderDone, preloaderNeeded } from '../preloader';
 
 const DURATION = 1700; // ms: thời gian đếm từ 0 đến 100
 
 /** Màn hình mở đầu: logo + số đếm 0 → 100 + thanh tiến độ, rồi kéo lên để lộ trang. Chỉ hiện lần đầu trong phiên. */
 export default function Preloader() {
-  const [active, setActive] = useState(() => !isPreloaderDone());
+  const [active, setActive] = useState(() => !isPreloaderDone() && preloaderNeeded());
   const [leaving, setLeaving] = useState(false);
   const counter = useRef<HTMLSpanElement>(null);
   const bar = useRef<HTMLSpanElement>(null);

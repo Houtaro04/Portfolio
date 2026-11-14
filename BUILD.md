@@ -1,4 +1,4 @@
-﻿# Hướng dẫn build – Kyle Portfolio
+# Hướng dẫn build – Kyle Portfolio
 
 Web portfolio tĩnh viết bằng **React + TypeScript + Vite**. Build xong ra thư mục `dist/` chỉ gồm HTML/CSS/JS, upload lên hosting nào cũng chạy được.
 
@@ -96,7 +96,7 @@ Các hiệu ứng khác dùng được ở cả hai kiểu cuộn (đều là CS
 | Tiêu đề hiện từng dòng | `components/Lines.tsx` |
 | Thẻ ảnh hé lộ bằng `clip-path` | `.item` trong `styles.css` |
 | Chuyển trang mượt giữa trang chủ và portfolio (Chrome/Edge) | `@view-transition` trong `styles.css` |
-| Mục **Sản phẩm** cuộn ngang theo cuộn dọc: cuộn chuột bình thường, mục này "ghim" trên màn hình và dải thẻ chạy sang ngang, xem hết thì trang cuộn xuống tiếp; có thanh tiến độ | `components/Portfolio.tsx`, hook `useHorizontalPin`, khối "MỤC SẢN PHẨM" trong `styles.css` |
+| Mục **Sản phẩm**: MỘT dải duy nhất cuộn ngang, lần lượt album nổi bật của từng phần theo `HOME_ORDER` trong `src/data.ts` (Chuyên nghiệp → Project → Công nghiệp → Video hậu trường), cuối dải là thẻ "Xem thêm". Tên các phần nằm thành một hàng ngay dưới chữ "Sản phẩm" (phần đang xem được tô sáng, bấm để nhảy tới album đầu của phần; có link "Xem tất cả"). **Trên máy tính, mỗi lần cuộn chỉ nhảy đúng MỘT album sang bên cạnh** (một nấc, lăn mạnh hay quán tính trackpad đều chỉ tính một bước, trượt 0,85 giây); cũng dùng được phím ↑ ↓ ← → PageUp PageDown Space. Ở thẻ đầu cuộn lên / thẻ cuối cuộn xuống thì trang cuộn tiếp bình thường để thoát khỏi khối; cuộn lửng lơ giữa hai album thì tự về album gần nhất. Điện thoại (không có Lenis) vẫn cuộn tự do, dừng nhẹ ở từng album. Máy tính có thêm hiệu ứng kiểu antiantiart (thẻ ở giữa to hơn, ảnh trượt lệch tốc độ, thẻ nghiêng theo tốc độ, tên mục thành chữ khổng lồ trộn màu); các hiệu ứng này chỉ cập nhật thẻ đang nhìn thấy và ghi thẳng style để cuộn không giật | `components/Portfolio.tsx`, hook `useHorizontalPin` trong `hooks.ts`, các khối "DẢI SẢN PHẨM MỘT MẠCH", "ĐẦU MỤC..." trong `styles.css` |
 | **Chân trang "kéo rèm"** gộp Social + bản quyền: khối liên hệ cố định phía sau, cuộn tới cuối thì nội dung cuộn đi để lộ ra | `components/Contact.tsx`, hook `useCurtainReveal`, khối "CHÂN TRANG KÉO RÈM" trong `styles.css` |
 | **Chuyển cảnh lưới ảnh** khi bấm vào sản phẩm (lưới 5 cột phóng vào ô được chọn, rồi màn che kéo lên) | `transition.ts`, `components/CoverCard.tsx`, khối "CHUYỂN CẢNH" trong `styles.css` |
 
@@ -117,6 +117,17 @@ Trên điện thoại / máy cảm ứng / màn dưới 820px, web tự vào **c
 
 Nếu thay ảnh nền hoặc ảnh hero, nhớ tạo luôn bản nhỏ cho điện thoại (nền ~720px chiều rộng, hero ~1800px) và ghi đè đường dẫn trong khối "TỐI ƯU & RESPONSIVE CHO ĐIỆN THOẠI" của `src/styles.css`.
 
+### Font chữ
+
+Bộ font giống yhao.art, nạp từ Google Fonts (có đủ chữ tiếng Việt), khai báo trong `<head>` của `index.html` và `portfolio.html`, dùng qua các biến ở đầu `src/styles.css`:
+
+| Biến | Font | Dùng cho |
+| --- | --- | --- |
+| `--serif` | Fraunces | tiêu đề, tên mục, chữ lớn |
+| `--sans`, `--font-label` | Geist | nội dung, nhãn nhỏ, nút |
+| `--font-hero` | Playfair Display (serif cổ điển, font gốc) | slogan lớn ở hero |
+
+Muốn đổi font: sửa link Google Fonts ở hai file HTML và các biến trên. Riêng slogan hero dùng `--font-hero` (dòng `.hero h1` ở cuối `styles.css`).
 ### Logo
 
 Logo là file `public/images/logo.png` (nền trong suốt, chữ trắng). Muốn đổi logo, thay file này bằng ảnh mới cùng tên, nên cắt sát chữ và rộng khoảng 800px.

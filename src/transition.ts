@@ -26,7 +26,22 @@ interface Stored {
   title: string;
   meta?: string;
   cover: Cover;
+  /** Có = chuyển cảnh "về trang chủ" kiểu màn che (xem FxName), không dùng lưới ảnh. */
+  fx?: FxName;
 }
+
+/**
+ * Hiệu ứng "về trang chủ" (khác lưới ảnh dùng khi đi vào album):
+ *  curtain: một màn tối kéo lên, logo ở giữa · columns: 6 cột trượt lên so le · layers: 3 lớp (vàng/nâu/đen) quét lên nối tiếp
+ *  iris: màn tối khép lại thành điểm tròn quanh logo rồi mở ra.
+ * Thử nhanh: mở portfolio.html?fx=columns (tên được nhớ trong phiên); fx=grid là lưới ảnh cũ.
+ */
+export type FxName = 'curtain' | 'columns' | 'layers' | 'iris';
+const FX_LIST: FxName[] = ['curtain', 'columns', 'layers', 'iris'];
+const FX_DEFAULT: FxName = 'iris';
+const FX_PANELS: Record<FxName, number> = { curtain: 1, columns: 6, layers: 3, iris: 1 };
+const FX_COVER_MS = 1150; // thời gian màn che phủ kín
+const FX_REVEAL_MS = 1350; // thời gian kéo màn che đi (cả phần so le)
 
 const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const root = document.documentElement;
@@ -83,13 +98,32 @@ const makeOverlay = (): HTMLDivElement => {
 };
 
 /** Màn che kéo lên để lộ trang bên dưới. */
-const playReveal = async (el: HTMLElement): Promise<void> => {
+const playReveal = async (el: HTMLElement, ms = REVEAL_MS): Promise<void> => {
   await frame();
   setPageReady(true); // cho các hiệu ứng "hiện khi cuộn tới" chạy cùng lúc màn che kéo đi
   el.classList.add('out');
-  await wait(REVEAL_MS);
+  await wait(ms);
   el.remove();
   root.classList.remove('is-transitioning');
+};
+
+/** Màn che kiểu "về trang chủ": các tấm nền + logo ở giữa. */
+const makeFx = (name: FxName): HTMLDivElement => {
+  const el = document.createElement('div');
+  el.className = `fx fx-${name}`;
+  el.setAttribute('aria-hidden', 'true');
+  for (let i = 0; i < FX_PANELS[name]; i++) {
+    const p = document.createElement('i');
+    p.className = 'fx-p';
+    p.style.setProperty('--i', String(i));
+    el.append(p);
+  }
+  const logo = document.createElement('img');
+  logo.className = 'fx-logo';
+  logo.src = `${import.meta.env.BASE_URL}images/logo.png`;
+  logo.alt = '';
+  el.append(logo);
+  return el;
 };
 
 /** Dựng lưới ảnh và phóng vào ô được chọn; trả về màn che đang phủ kín màn hình. */
@@ -141,6 +175,44 @@ export const transitionNavigate = async (info: TransitionInfo, href: string): Pr
   window.location.href = href;
 };
 
+/** Tên hiệu ứng "về trang chủ" đang dùng (đọc ?fx= một lần rồi nhớ trong phiên). 'grid' = lưới ảnh. */
+export const homeFx = (): FxName | 'grid' => {
+  let v: string | null = null;
+  try {
+    v = new URLSearchParams(window.location.search).get('fx');
+    if (v) sessionStorage.setItem('fx', v);
+    else v = sessionStorage.getItem('fx');
+  } catch {
+    /* bỏ qua */
+  }
+  return v === 'grid' || FX_LIST.includes(v as FxName) ? (v as FxName | 'grid') : FX_DEFAULT;
+};
+
+/** Về trang chủ (từ trang portfolio): hiệu ứng màn che + logo, rồi chuyển trang; trang chủ tự kéo màn che đi. */
+export const transitionHome = async (href: string): Promise<void> => {
+  const fx = homeFx();
+  if (fx === 'grid') {
+    await transitionNavigate(infoFromPage('Trang chủ', 'Kyle Hoang'), href);
+    return;
+  }
+  if (reduced) {
+    window.location.href = href;
+    return;
+  }
+  try {
+    sessionStorage.setItem(PT_KEY, JSON.stringify({ title: '', cover: {}, fx } satisfies Stored));
+  } catch {
+    /* bỏ qua */
+  }
+  const el = makeFx(fx);
+  document.body.append(el);
+  root.classList.add('is-transitioning');
+  await frame();
+  el.classList.add('in');
+  await wait(FX_COVER_MS);
+  window.location.href = href;
+};
+
 /** Đổi cảnh trong cùng trang: phóng lưới, chạy `action` (đổi nội dung), rồi kéo màn che lên. */
 export const transitionRoute = async (info: TransitionInfo, action: () => void): Promise<void> => {
   if (reduced) {
@@ -176,9 +248,16 @@ export const resumeTransition = (): void => {
     return;
   }
 
-  const el = makeOverlay();
-  el.classList.add('arrive', 'in', 'instant');
-  el.append(buildCell(data.cover, true, data));
+  let el: HTMLElement;
+  if (data.fx && FX_LIST.includes(data.fx)) {
+    el = makeFx(data.fx);
+    el.classList.add('in', 'instant');
+  } else {
+    el = makeOverlay();
+    el.classList.add('arrive', 'in', 'instant');
+    el.append(buildCell(data.cover, true, data));
+  }
+  const fxMode = !!data.fx;
   document.body.append(el);
   root.classList.add('is-transitioning');
 
@@ -188,7 +267,7 @@ export const resumeTransition = (): void => {
     started = true;
     await wait(450); // cho trang mới dựng xong nội dung trước khi kéo màn che lên
     el.classList.remove('instant');
-    await playReveal(el);
+    await playReveal(el, fxMode ? FX_REVEAL_MS : REVEAL_MS);
   };
   if (document.readyState === 'complete') void start();
   else window.addEventListener('load', () => void start(), { once: true });
@@ -198,7 +277,7 @@ export const resumeTransition = (): void => {
 /** Quay lại bằng nút Back (bfcache) thì gỡ màn che còn sót. */
 window.addEventListener('pageshow', (e) => {
   if (!e.persisted) return;
-  document.querySelectorAll('.pt').forEach((n) => n.remove());
+  document.querySelectorAll('.pt,.fx').forEach((n) => n.remove());
   root.classList.remove('is-transitioning');
   setPageReady(true);
 });
@@ -211,9 +290,18 @@ const coverOf = (card: Element): Cover => {
   return { hue: Number.isNaN(h) ? undefined : h };
 };
 
+/** Chuyển cảnh khi rời cả trang (vd. nút "Về trang chủ"): lưới ảnh lấy từ các thẻ đang có trên trang, ô chính là thẻ đầu tiên. */
+export const infoFromPage = (title: string, meta?: string): TransitionInfo => {
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.albums > .item, .gallery > .item'));
+  return { title, meta, covers: cards.map(coverOf), index: 0 };
+};
+
 /** Lấy ảnh bìa của mọi thẻ cùng danh sách với thẻ được bấm. */
 export const infoFromCard = (card: HTMLElement, title: string, meta?: string): TransitionInfo => {
-  const siblings = Array.from(card.parentElement?.querySelectorAll(':scope > .item') ?? [card]);
+  // Dải trang chủ: các thẻ nằm cùng một track (kể cả khác phần); lưới trang portfolio: các thẻ cùng cha
+  const siblings = Array.from(
+    card.closest('.hrail-track')?.querySelectorAll(':scope > .item') ?? card.parentElement?.querySelectorAll(':scope > .item') ?? [card]
+  );
   const index = Math.max(0, siblings.indexOf(card));
   return { title, meta, covers: siblings.map(coverOf), index };
 };

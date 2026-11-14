@@ -198,6 +198,12 @@ export const PORTFOLIO: Record<CategoryKey, Category> = {
   } satisfies VideoCategory,
 };
 
+/**
+ * Thứ tự các phần trong dải Sản phẩm ở trang chủ (cuộn ngang lần lượt từng album của từng phần).
+ * Không phụ thuộc thứ tự tab ở trang portfolio.html. Muốn đổi thì sắp lại danh sách này.
+ */
+export const HOME_ORDER: CategoryKey[] = ['pro', 'projects', 'industrial', 'bts'];
+
 /** Tab được chọn sẵn khi mở trang (cài ở content/settings.json). */
 export const DEFAULT_CATEGORY: CategoryKey =
   settingsJson.defaultCategory in PORTFOLIO
